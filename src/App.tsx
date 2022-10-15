@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import cityApi from './api/cityApi';
 
 function App() {
+  useEffect(()=>{
+    cityApi.getAll().then(rs=>console.log(rs));
+  })
   return (
     <div className="App">
       <header className="App-header">
