@@ -8,13 +8,15 @@ import {
   incrementAsync,
   incrementIfOdd,
   selectCount,
+  incrementSaga,
+  incrementSagaSuccess
 } from './counterSlice';
 import styles from './Counter.module.css';
 
 export function Counter() {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+  const [incrementAmount, setIncrementAmount] = useState(1);
 
   const incrementValue = Object(incrementAmount) || {};
 
@@ -42,7 +44,7 @@ export function Counter() {
           className={styles.textbox}
           aria-label="Set increment amount"
           value={incrementAmount}
-          onChange={(e) => setIncrementAmount(e.target.value)}
+          onChange={(e) => setIncrementAmount(Number(e.target.value))}
         />
         <button
           className={styles.button}
@@ -50,11 +52,17 @@ export function Counter() {
         >
           Add Amount
         </button>
-        <button
+        {/* <button
           className={styles.asyncButton}
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
+        </button> */}
+        <button
+          className={styles.asyncButton}
+          onClick={() => dispatch(incrementSaga(incrementValue))}
+        >
+          Add SAGA
         </button>
         <button
           className={styles.button}
