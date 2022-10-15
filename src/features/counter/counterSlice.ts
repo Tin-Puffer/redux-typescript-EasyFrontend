@@ -42,8 +42,8 @@ export const counterSlice = createSlice({
       state.value -= 1;
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
+    incrementByAmount: (state, action: PayloadAction<Object>) => {
+      // state.value += action.payload;
     },
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,

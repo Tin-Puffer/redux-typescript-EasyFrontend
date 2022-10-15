@@ -16,7 +16,7 @@ export function Counter() {
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
-  const incrementValue = Number(incrementAmount) || 0;
+  const incrementValue = Object(incrementAmount) || {};
 
   return (
     <div>
